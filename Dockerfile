@@ -79,4 +79,4 @@ RUN pip3 install telethon \
     pygofile \
     mongoengine  \
     telemongo  \
-CMD python3 -m userbot
+RUN ['bash','start']
