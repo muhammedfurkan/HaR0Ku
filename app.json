@@ -102,7 +102,7 @@
       "HU_STRING_SESSION": {
           "description": "Get this value by running python3 GenerateStringSession.py locally",
           "value": "",
-          "required": true
+          "required": false
       },
       "IBM_WATSON_CRED_PASSWORD": {
           "description": "This is required for the speech to text module. Get your PASSWORD from https://console.bluemix.net/docs/services/speech-to-text/getting-started.html",
