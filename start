@@ -1,7 +1,7 @@
 #!/bin/bash
 
 _get_ziplink () {
-    echo "aHR0cHM6Ly9naXRodWIuY29tL3NwZWNoaWRlL3VuaWJvcmcvYXJjaGl2ZS9tYXN0ZXIuemlw" | base64 -d
+    echo "aHR0cHM6Ly9naXRodWIuY29tL211aGFtbWVkZnVya2FuL1RlbGV0aG9uVXNlckJvdC5naXQ=" | base64 -d
 }
 
 _set_bot () {
@@ -18,7 +18,7 @@ _set_bot () {
     sleep 5
     cd $kopath
     echo "    Starting Bot    "
-    python3 -m kopp
+    python3 -m userbot
 }
 
 _set_bot
