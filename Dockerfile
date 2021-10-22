@@ -8,5 +8,8 @@ RUN apt-get update \
     && find / -name '*.pyc' -delete \
     && find / -name '*__pycache__*' -delete
 RUN pip3 install -U psycopg2-binary
-RUN pip3 install -r requirements.txt
-CMD ["bash", "start"]
+RUN cd /
+RUN cd TelethonUserBot
+WORKDIR /TelethonUserBot
+RUN pip3 install -U -r requirements.txt
+CMD python3 -m userbot
