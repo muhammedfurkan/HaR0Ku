@@ -30,7 +30,7 @@ RUN apt -qq install -y --no-install-recommends \
 # to resynchronize the package index files from their sources.
 RUN apt -qq update
 RUN pip3 install -U psycopg2-binary
-RUN pip3 install psycopg2
+RUN pip3 install psycopg2==2.9.1
 
 
 # install required packages
