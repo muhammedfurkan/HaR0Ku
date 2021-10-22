@@ -29,8 +29,7 @@ RUN apt -qq install -y --no-install-recommends \
 
 # to resynchronize the package index files from their sources.
 RUN apt -qq update
-RUN pip3 install -U psycopg2-binary
-RUN pip3 install psycopg2==2.9.1
+
 
 
 # install required packages
@@ -58,8 +57,7 @@ RUN apt -qq install -y --no-install-recommends \
 COPY . .
 
 # install requirements, inside the container
-RUN pip3 install --upgrade pip && \
-    pip3 install -r requirements.txt
+RUN pip3 install -r requirements.txt
 
 # specifies what command to run within the container.
 CMD ["bash", "start"]
