@@ -8,6 +8,5 @@ RUN apt-get update \
     && find / -name '*.pyc' -delete \
     && find / -name '*__pycache__*' -delete
 RUN pip3 install -U psycopg2-binary
-RUN cd /
-RUN pip3 install -U -r requirements.txt
+RUN pip3 install -r requirements.txt
 CMD ["bash", "start"]
