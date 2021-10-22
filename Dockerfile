@@ -8,7 +8,7 @@ RUN apt-get update \
     && find / -name '*.pyc' -delete \
     && find / -name '*__pycache__*' -delete
 RUN pip3 install psycopg2-binary
-RUN pip3 install git+https://github.com/LonamiWebs/Telethon.git \
+RUN pip3 install telethon \
     cryptg \
     alive-progress \
     Pillow \
