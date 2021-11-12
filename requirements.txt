@@ -31,7 +31,7 @@ pathlib
 patool
 psutil
 psycopg2-binary
-
+youtube_dl
 pySmartDL
 pydownload
 pysocks
