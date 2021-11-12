@@ -31,7 +31,7 @@ pathlib
 patool
 psutil
 psycopg2-binary
-psycopg2==2.0.10
+
 pySmartDL
 pydownload
 pysocks
