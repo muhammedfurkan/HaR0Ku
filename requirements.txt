@@ -1,60 +1,70 @@
-python-dotenv>=0.10
-
-telethon==1.19.0
-telethon-session-sqlalchemy==0.2.15
-cryptg==0.2.post2
-
-# GET / POST network requests
-asyncio==3.4.3
-aiohttp==3.6.2
-aiofiles==0.5.0
-
-aria2p==0.9.1
-
+git+https://github.com/LonamiWebs/Telethon.git
+cryptg
+alive-progress
+Pillow
+PyDrive
+PyPDF2
+aiofiles
+aiohttp
+aria2p
+asyncio
 beautifulsoup4
 cfscrape
-
 coffeehouse
-
-deezloader
-
+convertdate
+covid
 emoji
-
-googletrans==3.1.0a0
+feedparser
+google-api-python-client==1.7.11
+google_images_download
+googletrans
 gtts
-
-hachoir==3.1.1
-
-Pillow==8.0
-
-PyLyrics
-
+gaggle
+hachoir
+httplib2>=0.18.0
+humanize
+hurry.filesize
+lxml
+mtranslate
+oauth2client==4.1.3
+pathlib
+patool
+psutil
+psycopg2
 pySmartDL
-
+pydownload
+pysocks
 python-barcode
 python-magic
-
+pytube3
 qrcode
-
 regex
-
 requests
-
-selenium
-
+setuptools
+spamwatch
 speedtest-cli
-
-psycopg2-binary==2.8.6
-sqlalchemy==1.3.23
-
+spotify_token
+sqlalchemy
 telegraph
-
+tgcrypto
+typing
+unicode_tr
 urbandict
-
-youtube-dl
-
-google-api-python-client==1.7.11
-oauth2client==4.1.3
-httplib2==0.13.1
-
-justwatch
+urllib3
+wget
+wikipedia
+pymongo 
+dnspython
+# youtube-dl
+soundcloud-lib
+heroku3
+pyquery
+natsort #instadl
+instaloader #instadl
+gpytranslate #translate
+jsonpickle #storage
+gitpython # github updater
+appdirs #aria
+cchardet #aiohttp
+aiodns #aiphttp
+pygofile
