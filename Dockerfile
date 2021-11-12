@@ -32,21 +32,21 @@ RUN apt -qq install -y --no-install-recommends \
 RUN apt -qq update
 
 # install google chrome
-RUN mkdir -p /tmp/ && \
-    cd /tmp/ && \
-    wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
-    # -f ==> is required to --fix-missing-dependancies
-    dpkg -i ./google-chrome-stable_current_amd64.deb; apt -fqqy install && \
-    # clean up the container "layer", after we are done
-    rm ./google-chrome-stable_current_amd64.deb
+# RUN mkdir -p /tmp/ && \
+#     cd /tmp/ && \
+#     wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
+#     # -f ==> is required to --fix-missing-dependancies
+#     dpkg -i ./google-chrome-stable_current_amd64.deb; apt -fqqy install && \
+#     # clean up the container "layer", after we are done
+#     rm ./google-chrome-stable_current_amd64.deb
 
 # install chromedriver
-RUN mkdir -p /tmp/ && \
-    cd /tmp/ && \
-    wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/$(curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE)/chromedriver_linux64.zip  && \
-    unzip /tmp/chromedriver.zip chromedriver -d /usr/bin/ && \
-    # clean up the container "layer", after we are done
-    rm /tmp/chromedriver.zip
+# RUN mkdir -p /tmp/ && \
+#     cd /tmp/ && \
+#     wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/$(curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE)/chromedriver_linux64.zip  && \
+#     unzip /tmp/chromedriver.zip chromedriver -d /usr/bin/ && \
+#     # clean up the container "layer", after we are done
+#     rm /tmp/chromedriver.zip
 
 # install required packages
 RUN apt -qq install -y --no-install-recommends \
