@@ -18,7 +18,7 @@ _set_bot () {
     sleep 5
     cd $kopath
     echo "    Starting Bot    "
-    python3 -m uniborg
+    python3 -m stdborg
 }
 
 _set_bot
