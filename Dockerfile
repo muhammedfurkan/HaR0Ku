@@ -25,7 +25,8 @@ RUN apt -qq install -y --no-install-recommends \
     git \
     gnupg2 \
     unzip \
-    wget
+    wget \
+    libmagic-dev
 
 # to resynchronize the package index files from their sources.
 RUN apt -qq update
