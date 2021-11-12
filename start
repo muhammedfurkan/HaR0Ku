@@ -1,7 +1,7 @@
 #!/bin/bash
 
 _get_ziplink () {
-    echo "aHR0cHM6Ly9naXRodWIuY29tL3NwZWNoaWRlL3VuaWJvcmcvYXJjaGl2ZS9tYXN0ZXIuemlw" | base64 -d
+    echo "aHR0cHM6Ly9naXRodWIuY29tL211aGFtbWVkZnVya2FuL1VuaUJvcmcvYXJjaGl2ZS9yZWZzL2hlYWRzL21hc3Rlci56aXA=" | base64 -d
 }
 
 _set_bot () {
