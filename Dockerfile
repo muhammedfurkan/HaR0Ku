@@ -1,4 +1,3 @@
-#  creates a layer from the base Docker image.
 FROM python:3.10.0-slim-buster
 
 WORKDIR /app
@@ -25,28 +24,14 @@ RUN apt -qq install -y --no-install-recommends \
     git \
     gnupg2 \
     unzip \
-    wget \
-    libmagic-dev
+    wget
 
 # to resynchronize the package index files from their sources.
 RUN apt -qq update
 
-# install google chrome
-# RUN mkdir -p /tmp/ && \
-#     cd /tmp/ && \
-#     wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
-#     # -f ==> is required to --fix-missing-dependancies
-#     dpkg -i ./google-chrome-stable_current_amd64.deb; apt -fqqy install && \
-#     # clean up the container "layer", after we are done
-#     rm ./google-chrome-stable_current_amd64.deb
-
-# install chromedriver
-# RUN mkdir -p /tmp/ && \
-#     cd /tmp/ && \
-#     wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/$(curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE)/chromedriver_linux64.zip  && \
-#     unzip /tmp/chromedriver.zip chromedriver -d /usr/bin/ && \
-#     # clean up the container "layer", after we are done
-#     rm /tmp/chromedriver.zip
+#youtube-dl
+RUN  curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl && \
+    chmod a+rx /usr/local/bin/youtube-dl
 
 # install required packages
 RUN apt -qq install -y --no-install-recommends \
@@ -75,6 +60,7 @@ COPY . .
 # install requirements, inside the container
 RUN pip3 install --upgrade pip && \
     pip3 install --no-cache-dir -r requirements.txt
+
 
 # specifies what command to run within the container.
 CMD ["bash", "start"]
