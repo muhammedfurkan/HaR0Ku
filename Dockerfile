@@ -1,8 +1,7 @@
 #  creates a layer from the base Docker image.
-FROM python:3.9.5-slim-buster
+FROM python:3.10.0-slim-buster
 
 WORKDIR /app
-
 
 # https://shouldiblamecaching.com/
 ENV PIP_NO_CACHE_DIR 1
@@ -31,7 +30,6 @@ RUN apt -qq install -y --no-install-recommends \
 
 # to resynchronize the package index files from their sources.
 RUN apt -qq update
-
 
 
 # install required packages
