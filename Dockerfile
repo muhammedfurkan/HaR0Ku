@@ -49,12 +49,7 @@ RUN apt -qq install -y --no-install-recommends \
     # clean up the container "layer", after we are done
     rm -rf /var/lib/apt/lists /var/cache/apt/archives /tmp
 
-# each instruction creates one layer
-# Only the instructions RUN, COPY, ADD create layers.
-# copies 'requirements', to inside the container
-# ..., there are multiple '' dependancies,
-# requiring the use of the entire repo, hence
-# adds files from your Docker client’s current directory.
+
 COPY . .
 
 # install requirements, inside the container
