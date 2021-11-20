@@ -1,4 +1,5 @@
-FROM python:3.10.0-slim-buster
+#  creates a layer from the base Docker image.
+FROM python:3.9.5-slim-buster
 
 WORKDIR /app
 
@@ -24,14 +25,13 @@ RUN apt -qq install -y --no-install-recommends \
     git \
     gnupg2 \
     unzip \
-    wget
+    wget \
+    libmagic-dev
 
 # to resynchronize the package index files from their sources.
 RUN apt -qq update
 
-#youtube-dl
-RUN  curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl && \
-    chmod a+rx /usr/local/bin/youtube-dl
+
 
 # install required packages
 RUN apt -qq install -y --no-install-recommends \
@@ -60,7 +60,6 @@ COPY . .
 # install requirements, inside the container
 RUN pip3 install --upgrade pip && \
     pip3 install --no-cache-dir -r requirements.txt
-
 
 # specifies what command to run within the container.
 CMD ["bash", "start"]
