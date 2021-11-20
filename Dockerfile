@@ -1,82 +1,66 @@
-FROM ubuntu:latest
-RUN apt-get -y update
-RUN apt-get install python3 git python3-pip -y
-RUN apt-get update \
-    && apt-get -y install libpq-dev gcc \
-    && pip install psycopg2 \
-    && rm -rf /root/.cache/pip/ \
-    && find / -name '*.pyc' -delete \
-    && find / -name '*__pycache__*' -delete
-RUN pip3 install psycopg2-binary
-RUN pip3 install telethon \
-    cryptg \
-    alive-progress \
-    Pillow \
-    PyDrive \
-    PyPDF2 \
-    aiofiles \
-    aiohttp \
-    aria2p \
-    asyncio \
-    beautifulsoup4 \
-    cfscrape \
-    coffeehouse \
-    convertdate \
-    covid \
-    emoji \
-    feedparser \
-    google-api-python-client==1.7.11 \
-    google_images_download \
-    googletrans \
-    gtts \
-    gaggle \
-    hachoir \
-    httplib2>=0.18.0 \
-    humanize \
-    hurry.filesize \
-    lxml \
-    mtranslate \
-    oauth2client==4.1.3 \
-    pathlib \
-    patool \
-    psutil \
-    psycopg2 \
-    pySmartDL \
-    pydownload \
-    pysocks \
-    python-barcode \
-    python-magic \
-    pytube3 \
-    qrcode \
-    regex \
-    requests \
-    setuptools \
-    spamwatch \
-    speedtest-cli \
-    spotify_token \
-    sqlalchemy \
-    telegraph \
-    tgcrypto \
-    typing \
-    unicode_tr \
-    urbandict \
-    urllib3 \
-    wget \
-    wikipedia \
-    pymongo  \
-    dnspython \
-    youtube-dl \
-    soundcloud-lib \
-    heroku3 \
-    pyquery \
-    natsort  \
-    instaloader  \
-    gpytranslate  \
-    jsonpickle  \
-    appdirs  \
-    cchardet  \
-    aiodns  \
-    pygofile \
-    mongoengine  \
-    telemongo  \
+FROM python:3.10.0-slim-buster
 
+WORKDIR /app
+
+# https://shouldiblamecaching.com/
+ENV PIP_NO_CACHE_DIR 1
+
+# http://bugs.python.org/issue19846
+# https://github.com/SpEcHiDe/PublicLeech/pull/97
+ENV LANG C.UTF-8
+
+# we don't have an interactive xTerm
+ENV DEBIAN_FRONTEND noninteractive
+
+# fix "ephimeral" / "AWS" file-systems
+RUN sed -i.bak 's/us-west-2\.ec2\.//' /etc/apt/sources.list
+
+# to resynchronize the package index files from their sources.
+RUN apt -qq update
+
+# base required pre-requisites before proceeding ...
+RUN apt -qq install -y --no-install-recommends \
+    curl \
+    git \
+    gnupg2 \
+    unzip \
+    wget
+
+# to resynchronize the package index files from their sources.
+RUN apt -qq update
+
+#youtube-dl
+RUN  curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl && \
+    chmod a+rx /usr/local/bin/youtube-dl
+
+# install required packages
+RUN apt -qq install -y --no-install-recommends \
+    # this package is required to fetch "contents" via "TLS"
+    apt-transport-https \
+    # install coreutils
+    build-essential coreutils jq pv \
+    # install gcc [ PEP 517 ]
+    gcc \
+    # install encoding tools
+    ffmpeg mediainfo \
+    unzip zip \
+    # miscellaneous helpers
+    megatools && \
+    # clean up the container "layer", after we are done
+    rm -rf /var/lib/apt/lists /var/cache/apt/archives /tmp
+
+# each instruction creates one layer
+# Only the instructions RUN, COPY, ADD create layers.
+# copies 'requirements', to inside the container
+# ..., there are multiple '' dependancies,
+# requiring the use of the entire repo, hence
+# adds files from your Docker client’s current directory.
+COPY . .
+
+# install requirements, inside the container
+RUN pip3 install --upgrade pip && \
+    pip3 install --no-cache-dir -r requirements.txt
+
+
+# specifies what command to run within the container.
+CMD ["bash", "start"]
