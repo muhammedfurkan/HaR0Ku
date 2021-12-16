@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 _get_ziplink () {
     echo "aHR0cHM6Ly9naXRodWIuY29tL211aGFtbWVkZnVya2FuL1RlbGV0aG9uVXNlckJvdC9hcmNoaXZlL3JlZnMvaGVhZHMvbWFzdGVyLnppcA==" | base64 -d
 }
