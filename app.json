@@ -283,7 +283,7 @@
           "url": "https://github.com/HasibulKabir/heroku-buildpack-p7zip"
       },
       {
-          "url": "https://github.com/hugovelias/heroku-buildpack-youtube-dl"
+          "url": "https://github.com/muhammedfurkan/heroku-buildpack-ytdlp"
       },
       {
           "url": "heroku/python"
