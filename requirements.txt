@@ -69,4 +69,5 @@ appdirs #aria
 cchardet #aiohttp
 aiodns #aiphttp
 pygofile
+yt-dlp
 
